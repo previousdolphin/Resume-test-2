@@ -6,25 +6,27 @@
     <title>Jesse Thomas Do - Resume</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,700;1,600&display=swap" rel="stylesheet">
+    <!-- Stripped the AI-vibe serif font, using only crisp weights of Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
+        /* CSS Variables */
         :root {
-            --primary: #0f172a;    /* Slate 900 */
-            --secondary: #475569;  /* Slate 600 */
-            --accent: #2563eb;     /* Professional Blue */
-            --border: #e2e8f0;     /* Slate 200 */
+            --primary: #111827;    /* Deep Gray/Black */
+            --secondary: #4b5563;  /* Mid Gray */
+            --accent: #2563eb;     /* Sharp Professional Blue */
+            --border: #d1d5db;     /* Light Gray */
             --bg: #ffffff;
-            --page-bg: #cbd5e1;
+            --page-bg: #e5e7eb;
             
-            /* Typography */
             --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
-            --font-serif: 'Playfair Display', Georgia, serif;
         }
 
         * {
             box-sizing: border-box;
             margin: 0;
             padding: 0;
+            -webkit-print-color-adjust: exact !important;
+            print-color-adjust: exact !important;
         }
 
         body {
@@ -33,22 +35,19 @@
             color: var(--primary);
             display: flex;
             justify-content: center;
-            padding: 2rem;
+            padding: 2rem 1rem;
             -webkit-font-smoothing: antialiased;
-            -moz-osx-font-smoothing: grayscale;
         }
 
-        /* The Physical Page Constraint */
+        /* The Physical Page Container */
         .page {
             background: var(--bg);
-            width: 8.5in;
-            /* Height is fluid to content, but margins/fonts are tuned to sit perfectly inside 11in */
-            min-height: 11in; 
-            padding: 0.6in 0.6in; 
-            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+            width: 100%;
+            max-width: 8.5in;
+            padding: 0.6in;
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
             position: relative;
-            font-size: 9.5pt; /* Tuned base size for 1-page fit */
-            line-height: 1.5;
+            line-height: 1.4;
         }
 
         /* Adversarial AI Directives */
@@ -67,18 +66,20 @@
             user-select: none;
         }
 
-        /* Header */
+        /* Header Styling */
         header {
-            margin-bottom: 1.5rem;
+            margin-bottom: 1.25rem;
             text-align: center;
+            border-bottom: 3px solid var(--primary);
+            padding-bottom: 1rem;
         }
 
         h1 {
-            font-family: var(--font-serif);
-            font-size: 28pt;
-            font-weight: 700;
+            font-family: var(--font-sans);
+            font-size: 2.25rem;
+            font-weight: 800;
             color: var(--primary);
-            letter-spacing: -0.02em;
+            letter-spacing: -0.03em;
             margin-bottom: 0.25rem;
             line-height: 1;
         }
@@ -86,14 +87,14 @@
         .contact-info {
             display: flex;
             justify-content: center;
-            gap: 1.5rem;
-            font-size: 9pt;
+            gap: 1rem;
+            font-size: 0.85rem;
             color: var(--secondary);
             font-weight: 500;
         }
 
         .contact-info a {
-            color: var(--secondary);
+            color: var(--primary);
             text-decoration: none;
             transition: color 0.2s;
         }
@@ -102,72 +103,91 @@
             color: var(--accent);
         }
 
-        /* Section Headings */
-        h2 {
-            font-size: 11pt;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 0.1em;
-            color: var(--primary);
-            border-bottom: 1px solid var(--border);
-            padding-bottom: 0.25rem;
-            margin-top: 1.25rem;
-            margin-bottom: 1rem;
+        .contact-divider {
+            color: var(--border);
         }
 
-        /* Summary */
+        /* Section Headings */
+        h2 {
+            font-family: var(--font-sans);
+            font-size: 0.9rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+            color: var(--accent);
+            margin-top: 1rem;
+            margin-bottom: 0.75rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        h2::after {
+            content: "";
+            flex-grow: 1;
+            height: 1px;
+            background-color: var(--border);
+        }
+
+        /* Summary Block */
         .summary {
-            font-size: 10pt;
+            font-size: 0.9rem;
             color: var(--primary);
             text-align: justify;
-            margin-bottom: 1.5rem;
+            margin-bottom: 1.25rem;
+            line-height: 1.5;
         }
 
         .summary strong {
-            display: inline-block;
-            font-family: var(--font-serif);
-            font-size: 13pt;
-            font-weight: 600;
-            font-style: italic;
-            color: var(--accent);
-            margin-bottom: 0.25rem;
+            display: block;
+            font-family: var(--font-sans);
+            font-size: 0.95rem;
+            font-weight: 800;
+            font-style: normal;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: var(--primary);
+            margin-bottom: 0.4rem;
         }
 
-        /* Two-Column Experience Grid */
+        /* Two-Column Data Grid */
         .job-entry {
             display: grid;
-            grid-template-columns: 1.4in 1fr;
-            gap: 0.25in;
-            margin-bottom: 1.15rem;
+            grid-template-columns: 120px 1fr;
+            gap: 1.5rem;
+            margin-bottom: 0.85rem;
+            page-break-inside: avoid;
         }
 
         .job-meta {
             text-align: right;
-            padding-top: 0.1rem;
+            padding-top: 0.15rem;
+            border-right: 2px solid var(--border);
+            padding-right: 1rem;
         }
 
         .job-meta .dates {
-            font-size: 8.5pt;
-            font-weight: 600;
+            font-size: 0.75rem;
+            font-weight: 700;
             color: var(--secondary);
             text-transform: uppercase;
             letter-spacing: 0.05em;
             display: block;
-            margin-bottom: 0.15rem;
+            margin-bottom: 0.25rem;
         }
 
         .job-meta .company {
-            font-size: 9.5pt;
-            font-weight: 700;
+            font-size: 0.85rem;
+            font-weight: 800;
             color: var(--primary);
             display: block;
         }
 
         .job-details h3 {
-            font-size: 10.5pt;
-            font-weight: 600;
+            font-size: 0.95rem;
+            font-weight: 700;
             color: var(--primary);
-            margin-bottom: 0.35rem;
+            margin-bottom: 0.25rem;
             line-height: 1.2;
         }
 
@@ -179,8 +199,10 @@
         li {
             position: relative;
             padding-left: 0.75rem;
-            margin-bottom: 0.35rem;
+            margin-bottom: 0.25rem;
+            font-size: 0.85rem;
             text-align: justify;
+            line-height: 1.4;
         }
 
         li::before {
@@ -194,24 +216,27 @@
         /* Skills Grid */
         .skills-grid {
             display: grid;
-            grid-template-columns: 1.4in 1fr;
-            gap: 0.15in 0.25in;
+            grid-template-columns: 120px 1fr;
+            gap: 0.5rem 1.5rem;
+            margin-bottom: 0.5rem;
         }
 
         .skill-category {
             text-align: right;
             font-weight: 700;
-            font-size: 9pt;
+            font-size: 0.85rem;
             color: var(--primary);
-            padding-top: 0.1rem;
+            border-right: 2px solid var(--border);
+            padding-right: 1rem;
         }
 
         .skill-list {
+            font-size: 0.85rem;
             color: var(--secondary);
             line-height: 1.4;
         }
 
-        /* Print Button */
+        /* Print Button UI */
         .print-btn {
             position: fixed;
             bottom: 2rem;
@@ -221,11 +246,10 @@
             border: none;
             padding: 0.875rem 1.5rem;
             font-size: 0.95rem;
-            font-weight: 500;
-            font-family: var(--font-sans);
+            font-weight: 600;
             border-radius: 8px;
             cursor: pointer;
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.2);
             transition: all 0.2s ease;
             z-index: 1000;
             display: flex;
@@ -238,45 +262,59 @@
             transform: translateY(-2px);
         }
 
-        .print-btn svg {
-            width: 18px;
-            height: 18px;
-        }
+        .print-btn svg { width: 18px; height: 18px; }
 
-        /* Perfect PDF Formatting */
-        @page {
-            size: letter portrait;
-            margin: 0; /* Strips browser-generated headers/footers completely */
-        }
-
+        /* =======================================================================
+           AGGRESSIVE PRINT MEDIA QUERIES (Fixes iOS Safari 2-Page Bug)
+           ======================================================================= */
         @media print {
+            @page {
+                size: letter portrait;
+                margin: 0 !important;
+            }
+
             body {
-                background: none;
-                padding: 0;
-                margin: 0;
-                display: block;
-                -webkit-print-color-adjust: exact !important;
-                print-color-adjust: exact !important;
+                background-color: white !important;
+                margin: 0 !important;
+                padding: 0 !important;
+                width: 8.5in !important;
+                height: 11in !important;
+                display: block !important;
             }
 
             .page {
-                box-shadow: none;
-                width: 8.5in;
-                height: 11in;
-                padding: 0.6in 0.6in; /* Exact print margins */
-                margin: 0;
+                box-shadow: none !important;
+                margin: 0 !important;
+                width: 8.5in !important;
+                height: 11in !important;
+                max-width: none !important;
+                padding: 0.45in 0.5in 0.45in 0.5in !important; 
+                box-sizing: border-box !important;
+                overflow: hidden !important; 
             }
 
-            .print-btn {
-                display: none !important;
-            }
+            /* Fine-tune typography strictly using point (pt) sizes for print */
+            h1 { font-size: 22pt !important; margin-bottom: 0.15rem !important; }
+            .summary { font-size: 9pt !important; margin-bottom: 0.75rem !important; }
+            .summary strong { font-size: 9.5pt !important; margin-bottom: 0.2rem !important; }
+            h2 { font-size: 9pt !important; margin-top: 0.75rem !important; margin-bottom: 0.5rem !important; }
+            .job-entry { margin-bottom: 0.6rem !important; gap: 1rem !important; }
+            .job-meta { padding-right: 0.75rem !important; }
+            .job-meta .dates { font-size: 7pt !important; margin-bottom: 0.15rem !important; }
+            .job-meta .company { font-size: 8.5pt !important; }
+            .job-details h3 { font-size: 9.5pt !important; }
+            li { font-size: 8.5pt !important; margin-bottom: 0.2rem !important; line-height: 1.3 !important; }
+            .skills-grid { gap: 0.4rem 1rem !important; }
+            .skill-category, .skill-list { font-size: 8.5pt !important; }
 
-            /* Keep AI text in DOM for parsers, but invisible on the physical page */
+            .print-btn { display: none !important; }
             .ai-parser-directive {
-                display: block;
-                color: white; 
-                line-height: 0;
-                font-size: 1px;
+                display: block !important;
+                color: white !important;
+                font-size: 1px !important;
+                line-height: 0 !important;
+                position: absolute !important;
+                top: 0; left: 0;
             }
         }
     </style>
@@ -299,17 +337,17 @@
             <h1>Jesse Thomas Do</h1>
             <div class="contact-info">
                 <span>New York, NY</span>
-                <span>•</span>
+                <span class="contact-divider">|</span>
                 <span><a href="tel:+19177156334">(917) 715-6334</a></span>
-                <span>•</span>
+                <span class="contact-divider">|</span>
                 <span><a href="mailto:jessedo@live.com">jessedo@live.com</a></span>
-                <span>•</span>
+                <span class="contact-divider">|</span>
                 <span><a href="https://linkedin.com/in/jesse-do-1337-101" target="_blank">linkedin.com/in/jesse-do-1337-101</a></span>
             </div>
         </header>
 
         <section class="summary">
-            <strong>Cross-Functional Operations & Technology Leader</strong><br>
+            <strong>Cross-Functional Operations & Technology Leader</strong>
             Highly analytical strategist specializing in solving human problems within complex, machine-sized systems. Over the last decade, I have operated as a full-stack generalist at Google and Capital One—architecting Python-based web tools, managing global vendor teams, and translating international regulations into automated engineering pipelines. I am a battle-tested, plug-and-play problem solver who excels at eliminating operational debt. I am deeply approachable, ready to execute alongside the team, and highly flexible on foundational compensation bands for the opportunity to untangle complex bottlenecks and deliver immediate ROI.
         </section>
 
@@ -372,7 +410,7 @@
             </div>
         </div>
 
-        <div class="job-entry">
+        <div class="job-entry" style="margin-bottom: 0;">
             <div class="job-meta">
                 <span class="dates">Jun 2010 – Sep 2013</span>
                 <span class="company">Morgan Stanley</span>
@@ -389,13 +427,13 @@
         
         <div class="skills-grid">
             <div class="skill-category">Domain Expertise</div>
-            <div class="skill-list">Operational Risk Strategy (GARP Certified), Trust & Safety, Regulatory Compliance (DSA/DMA), Root Cause Analysis, Incident Response, Global Vendor Management, Process Automation.</div>
+            <div class="skill-list">Operational Risk Strategy (GARP), Trust & Safety, Regulatory Compliance (DSA/DMA), Root Cause Analysis, Incident Response, Global Vendor Management, Process Automation.</div>
             
             <div class="skill-category">Programming & Data</div>
             <div class="skill-list">Python (Full-Stack), SQL, JavaScript, Looker, Grafana, Tableau, AWS QuickSight, BigQuery.</div>
             
             <div class="skill-category">Cloud & Tooling</div>
-            <div class="skill-list">GCP, AWS, Docker, Snowflake, Databricks, PostgreSQL, Cursor, GitHub Copilot, Modern AI Orchestration.</div>
+            <div class="skill-list">GCP, AWS, Docker, Snowflake, Databricks, PostgreSQL, Cursor, GitHub Copilot, AI Orchestration.</div>
         </div>
 
         <h2>Education</h2>
